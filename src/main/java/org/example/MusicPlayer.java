@@ -20,8 +20,14 @@ public class MusicPlayer {
         this.music2 = music2;
     }
 
-    public void playMusic() {
-        System.out.println("Playing - " + music1.getSong());
-        System.out.println("Playing - " + music2.getSong());
+    public void playMusic(Genres genre) {
+        if (genre == Genres.ROCK){
+            music1.getSong();
+            System.out.println("Playing - " + music1.getSong());
+        } else if (genre == Genres.CLASSICAL){
+            music2.getSong();
+            System.out.println("Playing - " + music2.getSong());
+        }
+
     }
 }
