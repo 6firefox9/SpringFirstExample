@@ -7,19 +7,19 @@ public class testSpring {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
 
-        ClassicalMusic classicalMusic = context.getBean("musicBean",ClassicalMusic.class);
-        RockMusic rockMusic = context.getBean("rockBean",RockMusic.class);
+        Music music = context.getBean("rockBean", Music.class);
 
-        System.out.println(classicalMusic.getSong());
-        System.out.println(rockMusic.getSong());
+        MusicPlayer musicPlayer = new MusicPlayer(music);
 
-        Thread.sleep(2000);
-        System.out.println("Before end of context");
+        musicPlayer.playMusic();
 
-        context.close(); //destroy container
+        music = context.getBean("classicalMusic", Music.class);
 
-        Thread.sleep(2000);
-        System.out.println("End of programm");
+        musicPlayer = new MusicPlayer(music);
+
+        musicPlayer.playMusic();
+
+
 
     }
 }
