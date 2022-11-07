@@ -1,17 +1,25 @@
 package org.example;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
+@Scope("prototype")
 public class RockMusic implements Music{
-
-    private String[] rockSongs = {"Godsmack - I stand alone" ,
-            "SOAD - Dreaming" , "Linkin park - Breaking the habits"};
-
+    @PostConstruct
+    public void rockInit(){
+        System.out.println("Initialization of Rock!");
+    }
+    @PreDestroy
+    public void rockDestroy(){
+        System.out.println("Rock never die!");
+    }
 
     @Override
     public String getSong() {
-        int randomDigit = (int) (Math.random() * 3);
-        return rockSongs[randomDigit];
+        return "I stand alone";
     }
 }

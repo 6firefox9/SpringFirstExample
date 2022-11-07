@@ -2,14 +2,17 @@ package org.example;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class testSpring {
+public class TestSpring {
     public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 
-        musicPlayer.playMusic(Genres.ROCK);
+        System.out.println(musicPlayer.playMusic());
+
+        System.out.println("Current volume - " + musicPlayer.getVolume());
+        System.out.println("Current player - " + musicPlayer.getName());
 
         context.close();
     }
